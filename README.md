@@ -13,7 +13,7 @@
 
 ### Running the code
 ```
-python main.py --model_name Conformer --dataset_dir $FEIS --num_electrodes 14 --n_subjects 21 --exper-setting indep --save_file_name indep_conformer_results.csv
+python main.py --n_classes [num. classes] --dataset_dir [dir_path] --in_channels 5 --num_electrodes 62 --model_name COPA
 ```
 
 
