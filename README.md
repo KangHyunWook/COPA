@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <img width="800" src="vis.png">
+  <img width="800" src="COPA.png">
 </p>
 
 ### Data Download and set up environments
