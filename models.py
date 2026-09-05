@@ -1,3 +1,56 @@
+def generate_cheby_adj(L, K):
+    support = []
+    for i in range(K):
+        if i == 0:
+            support.append(torch.eye(L.shape[-1]).cuda(0))
+        elif i == 1:
+            support.append(L)
+        else:
+            temp = torch.matmul(2*L,support[-1],)-support[-2]
+            support.append(temp)
+    return support
+
+class GraphConvolution(nn.Module):
+
+    def __init__(self, in_channels, out_channels, bias=False):
+
+        super(GraphConvolution, self).__init__()
+
+        self.in_channels = in_channels
+        self.out_channels = out_channels
+        self.weight = nn.Parameter(torch.FloatTensor(in_channels, out_channels).cuda(0))
+        nn.init.xavier_normal_(self.weight)
+        self.bias = None
+        if bias:
+            self.bias = nn.Parameter(torch.FloatTensor(out_channels).cuda(0))
+            nn.init.zeros_(self.bias)
+
+    def forward(self, x, adj):
+        out = torch.matmul(adj, x)
+        out = torch.matmul(out, self.weight)
+        if self.bias is not None:
+            return out + self.bias
+        else:
+            return out
+
+class Chebynet(nn.Module):
+    def __init__(self, in_channels, K, out_channels):
+        super(Chebynet, self).__init__()
+        self.K = K
+        self.gc1 = nn.ModuleList()
+        for i in range(K):
+            self.gc1.append(GraphConvolution( in_channels,  out_channels))
+
+    def forward(self, x,L):
+        adj = generate_cheby_adj(L, self.K)
+        for i in range(len(self.gc1)):
+            if i == 0:
+                result = self.gc1[i](x, adj[i])
+            else:
+                result += self.gc1[i](x, adj[i])
+        result = F.relu(result)
+        return result
+
 #code adapted from: https://github.com/xueyunlong12589/DGCNN/blob/main/model.py
 class DGCNN(nn.Module):
     def __init__(self, config):
