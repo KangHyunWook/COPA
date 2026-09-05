@@ -37,7 +37,7 @@ python main.py --n_classes [num. classes] --dataset_dir [dir_path] --in_channels
 
 ### Citation
 
-If this code is helpful for your research, please cite us at:
+If this code is useful for your research, please cite us at:
 
 ```
 @article{Kang2026COPA,
