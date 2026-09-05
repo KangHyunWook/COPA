@@ -16,6 +16,7 @@
     <td>dir_path</td>
 <tr>SEED-IV </tr>
 </table>
+
 ### Running the code
 ```
 python main.py --n_classes [num. classes] --dataset_dir [dir_path] --in_channels 5 --num_electrodes 62 --model_name COPA
