@@ -132,8 +132,6 @@ class LSTM(nn.Module):
         
         self.project_eeg=nn.Sequential()
         self.project_eeg.add_module('project_eeg', nn.Linear(in_features=4*hidden_sizes[0],out_features=hidden_sizes[1]))
-
-
         
     def extract_features(self, x, batch_size):
         x=torch.unsqueeze(x,dim=0)
