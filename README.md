@@ -11,10 +11,22 @@
  - [SEED-IV](https://bcmi.sjtu.edu.cn/home/seed/seed-iv.html#)
 
 <table>
-<tr>SEED </tr>
-    <td>num. classes</td>
+<tr>
+    <th>Dataset</th>
+      <th>num. classes</th>
     <td>dir_path</td>
-<tr>SEED-IV </tr>
+  </tr>
+<tr>
+  <td>SEED </td>
+  <td>3</td>
+  <td>[root_folder]/SEED/ExtractedFeatures</td>
+</tr>
+  
+<tr>
+  <td>SEED-IV </td>
+  <td>4</td>
+  <td>[root_folder]/SEED-IV/eeg_feature_smooth</td>
+</tr>
 </table>
 
 ### Running the code
