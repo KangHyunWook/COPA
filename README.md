@@ -11,6 +11,11 @@
  - [SEED-IV](https://bcmi.sjtu.edu.cn/home/seed/seed-iv.html#)
 
 
+<tr>
+  <td>SEED</td>
+  <td>SEED-IV</td>
+</tr>
+
 ### Running the code
 ```
 python main.py --n_classes [num. classes] --dataset_dir [dir_path] --in_channels 5 --num_electrodes 62 --model_name COPA
