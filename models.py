@@ -160,23 +160,6 @@ class LSTM(nn.Module):
 
         return o
 
-class GLU(nn.Module):
-    def __init__(self, features, dropout=0.1):
-        super(GLU, self).__init__()
-        self.conv1 = nn.Conv2d(features, features, (1, 1))
-        self.conv2 = nn.Conv2d(features, features, (1, 1))
-        self.conv3 = nn.Conv2d(features, features, (1, 1))
-        self.dropout = nn.Dropout(dropout)
-
-    def forward(self, x):
-        x=torch.unsqueeze(x,dim=3)
-        x1 = self.conv1(x)
-        x2 = self.conv2(x)
-        out = x1 * torch.sigmoid(x2)
-        out = self.dropout(out)
-        out = self.conv3(out)
-        out=torch.squeeze(x,dim=3)
-        return out
 
 
 class COPA(nn.Module):
@@ -225,7 +208,6 @@ class COPA(nn.Module):
         encoder_layer_feat = nn.TransformerEncoderLayer(d_model=310, nhead=2)
         self.transformer_encoder_feat = nn.TransformerEncoder(encoder_layer_feat, num_layers=1)
         
-        self.glu=GLU(62,0.01)
     
     def alignment(self, con, loc, seq):
         batch_size = con.shape[0]
@@ -263,7 +245,6 @@ class COPA(nn.Module):
         self.shared_seq = self.shared(seq)
         
     def forward(self,x):
-        x=self.glu(x)
         batch_size=x.shape[0]
         con=self.dgcnn(x) # EEG channel connectivity features      
         loc = self.cnn(x)
