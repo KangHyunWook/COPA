@@ -41,7 +41,7 @@ If this code is useful for your research, please cite us at:
 
 ```
 @article{Kang2026COPA,
-  title={Incongruity-aware shared-private parallel fusion with selective feature passing for EEG-based emotion recognition},
+  title={Shared-Private Representation Learning of Heterogeneous EEG Features for Emotion Recognition},
   author={Kang, Hyunwook and Lee, Young-Eun and Lee, Minji},
   journal={Biomedical Signal Processing and Control},
   year={2026}
