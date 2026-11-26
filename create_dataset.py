@@ -78,7 +78,6 @@ class SEED_IV:
                 self.dev=dev=train[offset:]
                 self.train=train=train[:offset]
                 
-
                 
                 to_pickle(train,DATA_PATH+train_fn)
                 to_pickle(dev,DATA_PATH+dev_fn)
@@ -192,6 +191,9 @@ class SEED:
                 offset=int(len(train)*0.7)
                 self.dev=dev=train[offset:]
                 train=train[:offset]                
+
+                if not os.path.exists(os.path.join(DATA_PATH, 'indep')): 
+                    os.makedirs(os.path.join(DATA_PATH, 'indep'))
 
                 to_pickle(train, DATA_PATH+train_fn)
                 to_pickle(dev, DATA_PATH+dev_fn)
