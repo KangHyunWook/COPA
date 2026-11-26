@@ -41,8 +41,8 @@ python main.py --n_classes [num. classes] --dataset_dir [dir_path] --in_channels
 If this code is useful for your research, please cite us at:
 
 ```
-@article{Kang2026COPA,
-  title={Shared-Private Representation Learning of Heterogeneous EEG Features for Emotion Recognition},
+@article{Kang2027COPA,
+  title={Shared-private representation learning of heterogeneous EEG features for emotion recognition},
   author={Kang, Hyunwook and Lee, Young-Eun and Lee, Minji},
   journal={Biomedical Signal Processing and Control},
   year={2027}
