@@ -1,8 +1,8 @@
 # COPA
 
-
+Official implementation of the paper "
 <p align="center">
-  <img width="800" src="COPA.png">
+  <img width="800" src="COPA.png"> [Shared-private representation learning of heterogeneous EEG features for emotion recognition](https://www.sciencedirect.com/science/article/pii/S1746809426024389?dgcid=coauthor&fbclid=IwY2xjawV0ZVlleHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR8D3CWKPM1fkzxsUM9sROVehrz52wqhUBHpKqpd1nGXvvTDiH1unBB9njPfVA_aem_By1xmB35PMGMbosBrEiiqQ#d1e3749)
 </p>
 
 ### Data Download and set up environments
@@ -44,7 +44,7 @@ If this code is useful for your research, please cite us at:
   title={Shared-Private Representation Learning of Heterogeneous EEG Features for Emotion Recognition},
   author={Kang, Hyunwook and Lee, Young-Eun and Lee, Minji},
   journal={Biomedical Signal Processing and Control},
-  year={2026}
+  year={2027}
 }
 ```
 
