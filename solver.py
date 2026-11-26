@@ -109,9 +109,6 @@ class Solver(object):
                 break
        
     def get_cmd_loss(self,):
-        if not self.train_config.use_cmd_sim:
-            return 0.0
-
         loss = self.loss_cmd(self.model.shared_con, self.model.shared_loc,5)
         loss += self.loss_cmd(self.model.shared_con, self.model.shared_seq, 5)
         loss += self.loss_cmd(self.model.shared_seq, self.model.shared_loc, 5)
