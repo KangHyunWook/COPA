@@ -37,7 +37,7 @@ Set the dataset-wise parameters as follows:
 python main.py --n_classes [num. classes] --dataset_dir [dir_path] --in_channels 5 --num_electrodes 62 --model_name COPA
 ```
 
-Optionally choose --exper-setting indep for subject-independent setting, the default dep is in the subject-dependent setting
+Optionally choose --exper-setting indep for subject-independent setting, the default dep runs in the subject-dependent setting
 
 ### Citation
 
