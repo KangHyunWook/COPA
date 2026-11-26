@@ -5,16 +5,6 @@ import argparse
 import torch.optim as optim
 import torch.nn as nn
 
-
-def str2bool(v):
-    """string to boolean"""
-    if v.lower() in ('yes', 'true', 't', 'y', '1'):
-        return True
-    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
-        return False
-    else:
-        raise argparse.ArgumentTypeError('Boolean value expected.')
-
 class Config(object):
     def __init__(self, **kwargs):
         if kwargs is not None:
@@ -37,7 +27,6 @@ def get_config(**optional_kwargs):
     parser.add_argument('--num_epochs',type=int, default=500)
     parser.add_argument('--patience', type=int, default=6)
     parser.add_argument('--hidden_size', type=int, default=170)
-    parser.add_argument('--use_cmd_sim', type=str2bool, default=True)
     parser.add_argument('--dropout', type=float, default=0.5)
     parser.add_argument('--activation', type=str, default=nn.ReLU)
     parser.add_argument('--incon_weight', type=float, default=0.3)
