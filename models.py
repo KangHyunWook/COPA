@@ -1,3 +1,33 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+#code adapted from: https://github.com/xueyunlong12589/DGCNN/blob/main/utils.py
+def normalize_A(A,lmax=2):
+    A=F.relu(A)
+    N=A.shape[0]
+    A=A*(torch.ones(N,N).cuda(0)-torch.eye(N,N).cuda(0))
+    A=A+A.T
+    d = torch.sum(A, 1)
+    d = 1 / torch.sqrt((d + 1e-10))
+    D = torch.diag_embed(d)
+    L = torch.eye(N,N).cuda(0)-torch.matmul(torch.matmul(D, A), D)
+    Lnorm=(2*L/lmax)-torch.eye(N,N).cuda(0)
+
+    return Lnorm
+
+#code adapted from: https://github.com/xueyunlong12589/DGCNN/blob/main/layers.py
+class Linear(nn.Module):
+    def __init__(self, in_channels, out_channels, bias=True):
+        super(Linear, self).__init__()
+        self.linear = nn.Linear(in_channels, out_channels, bias=bias)
+        nn.init.xavier_normal_(self.linear.weight)
+        if bias:
+            nn.init.zeros_(self.linear.bias)
+
+    def forward(self, inputs):
+        return self.linear(inputs)
+
 def generate_cheby_adj(L, K):
     support = []
     for i in range(K):
@@ -173,17 +203,17 @@ class COPA(nn.Module):
         self.lstm = LSTM(config)
         self.activation = self.config.activation()
         
-        self.project_private_ccf = nn.Sequential()
-        self.project_private_ccf.add_module('project_private_ccf_1', nn.Linear(in_features=config.hidden_size, out_features=config.hidden_size))
-        self.project_private_ccf.add_module('project_private_ccf_activation_1', nn.Sigmoid())
+        self.project_private_con = nn.Sequential()
+        self.project_private_con.add_module('project_private_ccf_1', nn.Linear(in_features=config.hidden_size, out_features=config.hidden_size))
+        self.project_private_con.add_module('project_private_ccf_activation_1', nn.Sigmoid())
 
-        self.project_private_spatial = nn.Sequential()
-        self.project_private_spatial.add_module('project_private_spatial_1',nn.Linear(in_features=config.hidden_size, out_features=config.hidden_size))
-        self.project_private_spatial.add_module('project_private_spatial_activation_1', nn.Sigmoid())
+        self.project_private_loc = nn.Sequential()
+        self.project_private_loc.add_module('project_private_spatial_1',nn.Linear(in_features=config.hidden_size, out_features=config.hidden_size))
+        self.project_private_loc.add_module('project_private_spatial_activation_1', nn.Sigmoid())
 
-        self.project_private_temporal = nn.Sequential()
-        self.project_private_temporal.add_module('project_private_temporal_1', nn.Linear(in_features=config.hidden_size, out_features=config.hidden_size))
-        self.project_private_temporal.add_module('project_private_temporal_activation_1', nn.Sigmoid())
+        self.project_private_seq = nn.Sequential()
+        self.project_private_seq.add_module('project_private_temporal_1', nn.Linear(in_features=config.hidden_size, out_features=config.hidden_size))
+        self.project_private_seq.add_module('project_private_temporal_activation_1', nn.Sigmoid())
 
         self.shared = nn.Sequential()
         self.shared.add_module('shared_1', nn.Linear(in_features=config.hidden_size, out_features=config.hidden_size))
@@ -222,7 +252,7 @@ class COPA(nn.Module):
 
         o = self.fusion(h)
 
-      return o
+        return o
 
     
     def reconstruct(self,):
@@ -253,3 +283,4 @@ class COPA(nn.Module):
         o=self.alignment(con, loc, seq)
         
         return o 
+
