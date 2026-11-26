@@ -1,8 +1,9 @@
 # COPA
 
-Official implementation of the paper "
+Official implementation of the paper [Shared-private representation learning of heterogeneous EEG features for emotion recognition](https://www.sciencedirect.com/science/article/pii/S1746809426024389?dgcid=coauthor&fbclid=IwY2xjawV0ZVlleHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR8D3CWKPM1fkzxsUM9sROVehrz52wqhUBHpKqpd1nGXvvTDiH1unBB9njPfVA_aem_By1xmB35PMGMbosBrEiiqQ#d1e3749)
+
 <p align="center">
-  <img width="800" src="COPA.png"> [Shared-private representation learning of heterogeneous EEG features for emotion recognition](https://www.sciencedirect.com/science/article/pii/S1746809426024389?dgcid=coauthor&fbclid=IwY2xjawV0ZVlleHRuA2FlbQIxMQBwZG9mBXNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR8D3CWKPM1fkzxsUM9sROVehrz52wqhUBHpKqpd1nGXvvTDiH1unBB9njPfVA_aem_By1xmB35PMGMbosBrEiiqQ#d1e3749)
+  <img width="800" src="COPA.png"> 
 </p>
 
 ### Data Download and set up environments
