@@ -11,6 +11,8 @@ Official implementation of the paper [Shared-private representation learning of 
  - [SEED](https://bcmi.sjtu.edu.cn/home/seed/seed.html)
  - [SEED-IV](https://bcmi.sjtu.edu.cn/home/seed/seed-iv.html#)
 
+Set the dataset-wise parameters as follows:
+
 <table>
 <tr>
     <th>Dataset</th>
